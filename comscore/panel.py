@@ -30,11 +30,14 @@ def generate_stratified_sample(cps_df, comscore_demo_df, seed_value=datetime.now
         comscore_demo_df, "stratify", cps_stratify.index, cps_stratify.values
     )
 
-    demo_stratified = demo_df_s.stratify.value_counts()
     # summary dataframe between stratified source and our dataset
+    # demo_stratified = demo_df_s.stratify.value_counts()
     # summary_df = (
     #     pd.DataFrame(demo_stratified / demo_stratified.sum())
     #     .merge(cps_stratify, left_index=True, right_index=True)
     #     .rename(columns={"stratify": "comscore_proportion", "value": "cps_proportion"})
     # )
     return demo_df_s
+
+
+

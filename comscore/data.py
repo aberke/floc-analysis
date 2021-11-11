@@ -11,9 +11,10 @@ def read_comscore_demo_df(year):
     demo_df['stratify'] = demo_df.household_income.astype(str) + ", " + demo_df.racial_background.astype(str)
     return demo_df
 
+
 def read_cps_df():
     cps_df = pd.read_csv("data/CPS-race.csv", usecols=[0,1,2,3,4])[1:]
-    # manually created mapping
+    # manually created mapping from CPS categories to comscore levels.
     cps_df['comscore_mapping'] = [1,1,1,2,2,3,3,4,4,4,5,5,5,5,5,6,6,6,6,6,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7,7]
     cps_df = (cps_df.drop('Unnamed: 0', axis=1)
               # convert formatted numbers to numbers
@@ -22,5 +23,9 @@ def read_cps_df():
                               'black alone': 2,
                               'asian alone': 3})
              )
+    # Comscore only uses white,black,asian so we sum across these identities and subtract
+    # the total to get the 'other' count also present in the comscore data
     cps_df['5'] = cps_df.total - cps_df[[1,2,3]].sum(axis=1)
     return cps_df.drop('total', axis=1)
+
+
