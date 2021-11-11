@@ -10,8 +10,8 @@ cps_df = read_cps_df()
 comscore_demo_df = read_comscore_demo_df(year=COMSCORE_YEAR)
 
 # collapse income categories to 4 categories
-cps_df['comscore_mapping'] = cps_df.comscore_mapping.apply(lambda x: INCOME_MAPPING[x])
-comscore_demo_df['household_income'] = comscore_demo_df.household_income.apply(lambda x: INCOME_MAPPING[x])
+cps_df['comscore_mapping'] = cps_df.comscore_mapping.map(INCOME_MAPPING)
+comscore_demo_df['household_income'] = comscore_demo_df.household_income.map(INCOME_MAPPING)
 
 print("Done. Generating panels...")
 
