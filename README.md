@@ -56,3 +56,24 @@ https://github.com/shigeki/floc_simulator
 ### FLoC cohort analysis
 
 
+## FLoC cohort simulation
+
+FLoC cohorts are determined using the floc_simulator written by @shigeki.
+https://github.com/shigeki/floc_simulator.
+
+This is included as a submodule.
+
+To clone and reproduce this work / develop, you must initialize the submodule.
+
+When closing the repository do:
+
+```
+$ git clone --recurse-submodules https://github.com/aberke/floc-analysis
+```
+
+Or if you already cloned the repository:
+
+```
+$ git submodule update --init
+```
+
