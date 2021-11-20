@@ -17,14 +17,15 @@ The unique panel identifier is Machine ID and there are cases where multiple con
 We compare the demographics to census (ACS) data from the same time period.
 See notebook: https://github.com/aberke/floc-analysis/blob/master/notebooks/demographics_explore.ipynb
 
-We find that the distribution of populations by state and race demographics are similar, but the distributions of other demographics are not.
+We find that the distributions of populations by state and race demographics are very similar, but the distributions of other demographics are not.
 
 ### Panel creation via stratified sampling
 
-The output of the panel creation step is X panels, where each panel is randomly sampled without replacement, as described below. Output: `output/all_panels.csv` 
+The output of the panel creation step is N panels, where each panel is randomly sampled without replacement, as described below. Output: `output/all_panels.csv` 
 
 Current Population Survey (CPS) data is used with a stratified sampling approach to create panel data where the proportion of race, income groups are representative of nationwide U.S. demographics.
 (The Total > All Races table is used from https://www.census.gov/data/tables/time-series/demo/income-poverty/cps-hinc/hinc-02.2017.html.)
+(Income groups are collapsed.)
 
 To create a panel, combinations of `machine_id, week` are randomly sampled without replacement such that the demographics associated with the `machine_id`s in the panel are representative of the CPS data.
 
