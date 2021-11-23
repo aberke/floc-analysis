@@ -51,7 +51,9 @@ Output: TODO
 
 Each `machine_id, week` sample in the panel is associated with a cohort ID. The cohort ID is determined by using the week of browsed domains.
 The domains are used as input for the floc_simulator written by @shigeki.
-https://github.com/shigeki/floc_simulator
+https://github.com/shigeki/floc_simulator. 
+We use an already written python wrapper for this FLoC simulator: 
+https://github.com/thepabloaguilar/floc.
 
 
 ### FLoC cohort analysis
