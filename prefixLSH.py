@@ -23,10 +23,10 @@ def get_cohorts_dict(hash_list, min_k=K):
     Returns a dictionary mapping hash to (int) cohort ID.
     """
     # map hashes to their bit array representations
-    bit_hash_map = {h: binary_hash(h) for h in hash_list}
     # pass list with duplicates to sorting algorithm instead of values of map
-    bit_hash_list = [binary_hash(h) for h in hash_list] 
-    bit_hash_cohorts_dict = get_bit_hash_cohorts_dict(bit_hash_list)
+    bit_hash_list = [binary_hash(h) for h in hash_list]
+    # binary representation of hash -> cohortId
+    bit_hash_cohorts_dict = get_bit_hash_cohorts_dict(bit_hash_list, min_k=min_k)
     # map back to non bit-array hashes
     return {h: bit_hash_cohorts_dict[binary_hash(h)] for h in hash_list}
 
@@ -47,9 +47,21 @@ def get_bit_hash_cohorts_dict(bit_hash_list, min_k=K):
 
 
 def apply_prefixLSH(cohorts_dict, bit, sorted_bit_hash_list, min_k):
-
     """
-    pre-order tree traversal. Each leaf corresports to a cohort ID.
+
+    pre-order tree traversal. Each leaf corresponds to a cohort ID.
+    Args:
+
+    cohorts_dict - dict of form {bit_hash: cohort_id}. Empty on first call/root node
+    bit - Bit index to split cohort on. Starts at 0.
+    sorted_bit_hash_list - Sorted (asc) list of hashes, in binary rep. 
+    min_k - Minimum size of cohort to allow.
+
+    Returns:
+
+    An updated cohorts_dict ({bit_hash: cohort_id}) with a key for each bit_hash in
+    `sorted_bit_hash_list`.
+
     """
     if len(sorted_bit_hash_list) < min_k:
         raise Exception("fewer than %s hashes to sort" % min_k)
@@ -69,13 +81,19 @@ def apply_prefixLSH(cohorts_dict, bit, sorted_bit_hash_list, min_k):
     left_sorted_bit_hash_list = sorted_bit_hash_list[:i]
     right_sorted_bit_hash_list = sorted_bit_hash_list[i:]
 
-    if (len(left_sorted_bit_hash_list) < min_k) or (len(right_sorted_bit_hash_list) < min_k):
+    if (len(left_sorted_bit_hash_list) < min_k) or (
+        len(right_sorted_bit_hash_list) < min_k
+    ):
         # Do not recurse. This is a cohort.
         # cohort ID is the next largest cohort ID that hasn't been assigned.
         cohort_id = max(cohorts_dict.values()) + 1 if cohorts_dict else 1
-        cohorts_dict.update({bit_hash:cohort_id for bit_hash in sorted_bit_hash_list})
+        cohorts_dict.update({bit_hash: cohort_id for bit_hash in sorted_bit_hash_list})
         return cohorts_dict
 
-    cohorts_dict = apply_prefixLSH(cohorts_dict, bit+1, left_sorted_bit_hash_list, min_k)
-    cohorts_dict = apply_prefixLSH(cohorts_dict, bit+1, right_sorted_bit_hash_list, min_k)
+    cohorts_dict = apply_prefixLSH(
+        cohorts_dict, bit + 1, left_sorted_bit_hash_list, min_k
+    )
+    cohorts_dict = apply_prefixLSH(
+        cohorts_dict, bit + 1, right_sorted_bit_hash_list, min_k
+    )
     return cohorts_dict
