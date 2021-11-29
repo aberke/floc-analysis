@@ -26,6 +26,11 @@ def stratify_cps(cps_df):
 def generate_stratified_sample(cps_df, comscore_demo_df, seed_value=datetime.now()):
     random.seed(seed_value)
     cps_stratify = stratify_cps(cps_df)
+    comscore_demo_df['stratify'] = (
+        comscore_demo_df.household_income.astype(float).astype(str) \
+        + ", " \
+        + comscore_demo_df.racial_background.astype(float).astype(str)
+    )
     demo_df_s = stratify_data_without_replacement(
         comscore_demo_df, "stratify", cps_stratify.index, cps_stratify.values
     )

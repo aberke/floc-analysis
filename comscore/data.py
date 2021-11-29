@@ -5,10 +5,9 @@ import numpy as np
 def read_comscore_demo_df(year):
     demographics_fpath = 'data/comscore/{year}/demographics.csv'.format(year=year)
     demo_df = (pd.read_csv(demographics_fpath, usecols=['household_income', 'racial_background', 'machine_id'])
-               .assign(household_income = lambda x: x.household_income %10)
+               .assign(household_income = lambda x: x.household_income % 10)
                .replace({99:np.nan, -88: np.nan, 8: np.nan})
               .dropna())
-    demo_df['stratify'] = demo_df.household_income.astype(str) + ", " + demo_df.racial_background.astype(str)
     return demo_df
 
 
