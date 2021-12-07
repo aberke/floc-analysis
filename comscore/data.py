@@ -38,7 +38,7 @@ def write_weeks_machines_domains(df):
 def read_weeks_machines_domains(weeks_machines_domains_fpath, nrows=None):
     print('reading from %s...' % weeks_machines_domains_fpath)
     df = pd.read_csv(weeks_machines_domains_fpath, nrows=nrows)
-    df['domains'] = df.fillna('').domains_str.apply(lambda x: set(x.split('|')))
+    df['domains'] = df.domains_str.fillna('').apply(lambda x: set(x.split('|')) if x else set())
     df.drop('domains_str', axis=1, inplace=True)
     print('... read %s rows' % len(df))
     return df
