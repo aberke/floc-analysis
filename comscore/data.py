@@ -29,8 +29,8 @@ def read_cps_df(fpath="data/CPS-race.csv"):
 
 
 # ------------------------------------------------------------------------------
-def write_weeks_machines_domains(df):
-    weeks_machines_domains_df['domains_str'] = df.domains.apply(lambda x: "|".join(x))
+def write_weeks_machines_domains(df, weeks_machines_domains_fpath):
+    df['domains_str'] = df.domains.apply(lambda x: "|".join(x))
     print('saving %s rows to file %s...' % (len(df), weeks_machines_domains_fpath))
     df.drop('domains', axis=1).to_csv(weeks_machines_domains_fpath, index=False)
     print('...saved')
