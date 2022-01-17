@@ -1,7 +1,12 @@
 ## Added by us
 
 data/comscore/
-output/weeks_machines_domains.csv
+# TODO: later come back to this and put small files in output/
+# and large files in git LFS
+# for now, while work in progress, not using git LFS
+output/
+# output/weeks_machines_domains.csv
+
 
 ## Default good things
 
