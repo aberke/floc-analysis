@@ -6,7 +6,7 @@ data/comscore/
 # for now, while work in progress, not using git LFS
 output/
 # output/weeks_machines_domains.csv
-
+# output/figures/
 
 ## Default good things
 
