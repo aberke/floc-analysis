@@ -14,7 +14,7 @@ The comScore browsing sessions data was collected from more than 93,700 devices 
 
 The unique identifier is Machine ID and there are cases where multiple configured machines exist within a household, but all demographic information is based upon the associated household. All sessions are aggregated by machine in the household and a particular individual could use more than one machine.
 
-A description of the comScore data is in data/comscore/2017/codebook.pdf
+A description of the comScore data is in [data/comscore/2017/codebook.pdf](data/comscore/2017/codebook.pdf)
 
 ### Census data
 
@@ -26,9 +26,12 @@ We use census data from the American Community Survey (ACS) in order to inspect 
 ### Pre-analysis
 
 We compare the demographics to census data from the same time period.
-See notebook: https://github.com/aberke/floc-analysis/blob/master/notebooks/demographics_explore.ipynb
-
 We find that the distributions of populations by state and race demographics are very similar, but the distributions of other demographics are not.
+
+We also learn about the data quirks and bad encodings to work around in the preprocessing steps.
+
+[notebooks/check-comscore-demographics.ipynb](notebooks/check-comscore-demographics.ipynb)
+
 
 ### Panel creation via stratified sampling
 
