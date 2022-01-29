@@ -1,6 +1,6 @@
 ## Added by us
 
-data/comscore/
+data/comscore/*/*.csv
 # TODO: later come back to this and put small files in output/
 # and large files in git LFS
 # for now, while work in progress, not using git LFS

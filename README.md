@@ -1,20 +1,31 @@
 # floc-analysis
-FLoC analysis: privacy for sensitive groups
 
-## Data source
+This repository contains the code and empirical results from our analysis about the privacy limitations of Google's FLoC proposal.
+
+This analysis uses data from comScore Inc.
+While our work is open source, the comScore data is proprietary and available for purchase and cannot be openly shared. Our analysis shows aggregated previews of the data and can be fully replicated upon obtaining this dataset. 
+
+
+## Data sources
 
 ### The comScore Web Behavior Database
 
-The dataset is a sample of about 50,000 US Internet users who have given comScore explicit permission to confidentially capture their detailed browsing and buying behavior at the domain level.
+The comScore browsing sessions data was collected from more than 93,700 devices from 50,000 households across the U.S., over the 52 weeks of 2017. The sampled Internet users gave comScore explicit permission to confidentially capture their detailed browsing and buying behavior at the domain level.
 
-The unique panel identifier is Machine ID and there are cases where multiple configured machines exist within a household, but all demographic information is based upon the associated household. All sessions are aggregated by machine in the household, so that individual breakdowns are not available and a particular individual could use more than one machine.
+The unique identifier is Machine ID and there are cases where multiple configured machines exist within a household, but all demographic information is based upon the associated household. All sessions are aggregated by machine in the household and a particular individual could use more than one machine.
+
+A description of the comScore data is in data/comscore/2017/codebook.pdf
+
+### Census data
+
+We use census data from the American Community Survey (ACS) in order to inspect the representativeness of the comScore dataset and compute panels representative of the U.S. population for use in our sensitivity analysis.
 
 
 ## Anaylysis steps
 
 ### Pre-analysis
 
-We compare the demographics to census (ACS) data from the same time period.
+We compare the demographics to census data from the same time period.
 See notebook: https://github.com/aberke/floc-analysis/blob/master/notebooks/demographics_explore.ipynb
 
 We find that the distributions of populations by state and race demographics are very similar, but the distributions of other demographics are not.
