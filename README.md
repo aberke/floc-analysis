@@ -16,7 +16,7 @@ While our work is open source, the comScore data is proprietary and available fo
 
 In 2021, Google announced they would disable third-party cookies in the Chrome browser in order to improve user privacy. They proposed FLoC as an alternative, meant to enable interest-based advertising while mitigating risks of individualized user tracking. The FLoC algorithm assigns users to k-anonymous "cohorts" that represent groups of users with similar browsing behaviors so that third-parties can serve users ads based on their group.
 
-The FLoC API returns a users' cohort ID.
+The FLoC API returns a user's cohort ID.
 
 See https://github.com/WICG/floc
 
@@ -65,7 +65,7 @@ We borrow their use of t-closeness in our sensitivity analysis, where sensitive 
 Our analysis could not directly use the cohort IDs (and hash value to cohort ID mapping) from the OT because our dataset represents a sample of user devices that is a small fraction of the size of the number of user devices used in the OT.
 The OT cohort IDs were computed to be k-anonymous for k=2000 and there were 33,872 cohorts. If our analysis used these same cohorts, the cohorts would be sparsely populated, would not nearly reach the minimum size of k=2000, and the analysis would be meaningless.
 
-Instead we re-implment the OT FLoC cohort computation to allow for varying levels of k.
+Instead we re-implment the OT FLoC cohort computation to allow for varying minimum cohort sizes (k) and sizes of user device samples.
 
 To compute the SimHash over browsing histories in the same way as the FLoC OT, we use the SimHash implementation from the floc_simulator project that was developed by [@shigeki](https://github.com/shigeki): 
 https://github.com/shigeki/floc_simulator.
