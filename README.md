@@ -2,6 +2,12 @@
 
 This repository contains the code and empirical results from our analysis about the privacy limitations of Google's FLoC proposal.
 
+Preprint:
+
+Berke, A. & Calacci, D. (2022). Privacy Limitations Of Interest-based Advertising On The Web: A Post-mortem Empirical Analysis Of Google's FLoC. arXiv preprint arXiv:2201.13402.
+https://arxiv.org/pdf/2201.13402.pdf
+
+
 This analysis uses data from comScore Inc.
 While our work is open source, the comScore data is proprietary and available for purchase and cannot be openly shared due to the terms of use. Our analysis shows aggregated previews of the data and can be fully replicated upon obtaining this dataset. 
 
