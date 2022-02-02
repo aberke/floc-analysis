@@ -1,12 +1,16 @@
 ## Added by us
 
+
+# We previously had considered including large intermediary output files that were
+# the results of preprocessing via git LFS.
+# While it would be nice to include a minimal dataset to for other researchers
+# to reproduce this work without access to the comScore data, 
+# it is hard to determine what would actually be useful yet not violate the 
+# comScore data terms of use.
+# For now all comScore data and intermediary output files are excluded.
 data/comscore/*/*.csv
-# TODO: later come back to this and put small files in output/
-# and large files in git LFS
-# for now, while work in progress, not using git LFS
 output/
-# output/weeks_machines_domains.csv
-# output/figures/
+
 
 ## Default good things
 
