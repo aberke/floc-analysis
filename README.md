@@ -152,7 +152,7 @@ How does this risk increase when cohort IDs are combined with other forms of bro
 
 We analyze these questions using the preprocessed machine-weeks data.
 
-[notebooks/notebooks/unicity-analysis.ipynb](notebooks/notebooks/unicity-analysis.ipynb)
+[notebooks/notebooks/unicity-analysis.ipynb](notebooks/unicity-analysis.ipynb)
 
 
 ### Sensitivity analysis
