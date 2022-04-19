@@ -14,7 +14,7 @@ While our work is open source, the comScore data is proprietary and available fo
 
 ## About FLoC
 
-In 2021, Google announced they would disable third-party cookies in the Chrome browser in order to improve user privacy. They proposed FLoC as an alternative, meant to enable interest-based advertising while mitigating risks of individualized user tracking. The FLoC algorithm assigns users to k-anonymous "cohorts" that represent groups of users with similar browsing behaviors so that third-parties can serve users ads based on their group.
+In 2020, Google announced they would disable third-party cookies in the Chrome browser in order to improve user privacy. They proposed FLoC as an alternative, meant to enable interest-based advertising while mitigating risks of individualized user tracking. The FLoC algorithm assigns users to k-anonymous "cohorts" that represent groups of users with similar browsing behaviors so that third-parties can serve users ads based on their group.
 
 The FLoC API returns a user's cohort ID.
 
@@ -94,8 +94,6 @@ Our FLoC cohort creation was further informed by the following resources in orde
 The comScore browsing sessions data was collected from more than 93,700 devices from 50,000 households across the U.S., over the 52 weeks of 2017. The sampled Internet users gave comScore explicit permission to confidentially capture their detailed browsing and buying behavior at the domain level.
 
 Browsing sessions consist of a top-level domain name, associated statistics like number of pages viewed and duration of site visit, and the date of the visit. Each session is associated with a unique machine ID representing a single device in a U.S. household. Machine IDs are also associated with demographic information at the household level, which includes zip code and racial background. While a single household may have more than one machine, the dataset does not link the machine IDs by household; we treat machines as independent.
-
-The included demographic data used in this analysis is race and zip code.
 
 Our analyses that use racial background are limited by the racial backgrounds reported in the ComScore dataset, in which households are labeled as “Black”, “White”, “Asian”, or “Other”. We treat “Other” as being inclusive of multi-racial households and households that identify as Latino or Hispanic.
 
