@@ -5,8 +5,7 @@ import numpy as np
 def read_comscore_demo_df(year, fpath='data/comscore/{year}/demographics.csv'):
     demographics_fpath = fpath.format(year=year)
     demo_df = (pd.read_csv(demographics_fpath, usecols=['household_income', 'racial_background', 'machine_id'])
-               .assign(household_income = lambda x: x.household_income % 10)
-               .replace({99:np.nan, -88: np.nan, 8: np.nan})
+               .replace({99:np.nan, -88: np.nan})
               .dropna())
     return demo_df
 
