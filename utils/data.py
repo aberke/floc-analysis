@@ -2,6 +2,25 @@ import pandas as pd
 import numpy as np
 
 
+# The comscore data is coded with 8 income groups.
+# The Census data is code with many more. We used 4
+# income groups that both census and comScore data can map to. 
+income_groups_4 = {
+    1: 'less than $25,000',
+    2: '\$25,000 - $75,000',
+    3: '\$75,000 - $150,000',
+    4: '\$150,000 or more',
+ }
+ # comscore data is coded as follows. We add in 'any'.
+race_groups = {
+    1: 'white', 
+    2: 'black', 
+    3: 'asian', 
+    5: 'other', 
+    'any': 'any',
+}
+
+
 def read_comscore_demo_df(year, fpath='data/comscore/{year}/demographics.csv'):
     demographics_fpath = fpath.format(year=year)
     demo_df = (pd.read_csv(demographics_fpath, usecols=['household_income', 'racial_background', 'machine_id'])

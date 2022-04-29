@@ -155,11 +155,11 @@ We analyze these questions using the preprocessed machine-weeks data.
 
 ### Sensitivity analysis
 
-A core question in our analysis is whether information about a device user's likely race can be leaked by their FLoC cohort.
+A core question in our analysis is whether information about a device user's likely income or racial group can be leaked by their FLoC cohort.
 
 #### Relationship between racial background and domain browsing
 
-We do initial analysis of the relationship between racial background and domain browsing using the preprocessed machine-weeks data.
+We do initial analysis of the relationship between demographic groups (household income groups and racial backgrounds) and domain browsing by using the preprocessed machine-weeks data. We do this analysis for the income and race demographic groups separately.
 
 [notebooks/sensitivity-by-race-by-domain-visit-frequency.ipynb](notebooks/sensitivity-by-race-by-domain-visit-frequency.ipynb)
 
@@ -168,18 +168,18 @@ We do initial analysis of the relationship between racial background and domain 
 
 ##### Checking t-closeness violations for panel size matching OT
 
-As a first preliminary check, we check t-closeness violations with an artificially constructed panel that matches the U.S. population w.r.t. racial background distribution (using 2019 census data) and where cohort IDs are randomly assigned, and where the size of the panel is close to the FLoC size.
+As a preliminary check, we test t-closeness violations with an artificially constructed panel that matches the U.S. population w.r.t. demographic distribution (using 2017 census data) and where cohort IDs are randomly assigned, and where the size of the panel is close to the FLoC size. We do this check for the income and race demographic groups separately.
 
-We do this because if we find that random cohort ID assignments do not violate t-closeness (t=0.1, used in the OT) for the OT, and also find using our smaller dataset that FLoC cohort ID assignments do not violate t-closeness anymore than random change, then we can assume that the FLoC OT would not violate t-closeness.
+We do this because if we find that random cohort ID assignments do not violate t-closeness (t=0.1, used in the OT) for the OT, and also find using our smaller dataset that FLoC cohort ID assignments do not violate t-closeness anymore than random chance, then we can assume that the FLoC OT would not violate t-closeness.
 
 We find t-closeness is not violated for this panel (t=0.1).
 
-[notebooks/t-closeness-for-us-race.ipynb](notebooks/t-closeness-for-us-race.ipynb)
+[notebooks/t-closeness-for-us-income-race.ipynb](notebooks/t-closeness-for-us-income-race.ipynb)
 
 
 ##### Panel creation via stratified sampling
 
-Panels are sampled using stratified random sampling (without replacement) so that the distribution of race demographics in each of the panels matches the distribution of the U.S. population, as reported by the Census (ACS).
+Panels are sampled using stratified random sampling (without replacement) so that the joint distribution of income and race demographics in each of the panels matches the distribution of the U.S. population, as reported by the Census (ACS).
 
 We generate 10 panels for each of the 520 weeks.
 
@@ -187,7 +187,7 @@ This allows us to compute confidence intervals in our t-closeness analysis.
 
 The output of this step is a panels file that is then used in the following steps.
 
-[generate-stratified-panels-by-race-for-week-machine.ipynb](generate-stratified-panels-by-race-for-week-machine.ipynb)
+[notebooks/generate-stratified-panels-by-income-race-for-week-machine.ipynb](notebooks/generate-stratified-panels-by-income-race-for-week-machine.ipynb)
 
 
 ##### Precompute SimHash for panels and create randomized panel
@@ -195,18 +195,21 @@ The output of this step is a panels file that is then used in the following step
 We precompute the SimHash values for each machine-week for each panel sample.
 We then precompute the cohort assignments for each panel for use in the t-closeness analysis.
 
-We also create a randomized version of the panel to use as a comparison baseline. To do this, we copy the panels and randomly shuffle the SimHash values and compute cohorts. For this new randomized panel where the SimHash values have been randomly reassigned, race for panel samples is guaranteed independent of cohort assignment.
+We also create a randomized version of the panel to use as a comparison baseline. To do this, we copy the panels and randomly shuffle the SimHash values and compute cohorts. For this new randomized panel where the SimHash values have been randomly reassigned, demographic groups for panel samples are guaranteed independent of cohort assignment.
 
-[notebooks/cohorts-for-comscore-race-stratified-panels.ipynb](notebooks/cohorts-for-comscore-race-stratified-panels.ipynb)
+[notebooks/cohorts-for-income-race-stratified-panels.ipynb](notebooks/cohorts-for-income-race-stratified-panels.ipynb)
 
 
 ##### t-closeness analysis using precomputed panels
 
-We compute t-closeness violations, where race is considered the sensitive attribute, over our panels data for a range of t values.
+We compute t-closeness violations, where demographic group (either income or race) is considered the sensitive attribute, over our panels data for a range of t values.
+
+We do the analyses separately for the income groups vs the racial background demographics. That is, we first check t-closeness violations for racial background groups as "sensitive categories", and then separately check t-closeness violations for income groups as "sensitive categories". 
+We use the same panels and cohort assignments for the separate analyses. (Each sample in a panel has both a income group and racial background.)
 
 Since our panels are small, some t-closeness violations must be expected due to random chance.
 We compare the empirical results from our panels data to two baselines that represent t-closeness violations due to random chance:
 1. expected t-closeness violations modeled by a binomial CDF.
 2. t-closeness violations computed over the randomized panels data.
 
-[notebooks/t-closeness-for-comscore-panels-by-race.ipynb](notebooks/t-closeness-for-comscore-panels-by-race.ipynb)
+[notebooks/t-closeness-for-comscore-panels-by-income-race.ipynb](notebooks/t-closeness-for-comscore-panels-by-income-race.ipynb)
