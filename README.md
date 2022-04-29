@@ -97,7 +97,7 @@ Browsing sessions consist of a top-level domain name, associated statistics like
 
 Our analyses that use racial background are limited by the racial backgrounds reported in the ComScore dataset, in which households are labeled as “Black”, “White”, “Asian”, or “Other”. We treat “Other” as being inclusive of multi-racial households and households that identify as Latino or Hispanic.
 
-A description of the comScore data is in [data/comscore/2017/codebook.pdf](data/comscore/2017/codebook.pdf)
+See further description of the comScore data in `./data/`.
 
 
 ### Census data
@@ -109,12 +109,12 @@ We use census data from the American Community Survey (ACS) in order to inspect 
 
 ### Pre-analysis: Demographics
 
-We compare the demographics to census data from the same time period.
-We find that the distributions of populations by state and race demographics are very similar, but the distributions of other demographics are not.
+We compare the demographics to census data from the same time period (2017).
+We find that the distributions of populations by state and race and income demographics are very similar, but the distributions of other demographics are not.
 
-We also learn about the data quirks and bad encodings to work around in the preprocessing steps.
+We also learn about the data quirks to work around in the preprocessing steps.
 
-[notebooks/check-comscore-demographics.ipynb](notebooks/check-comscore-demographics.ipynb)
+[notebooks/check-comscore-demographics.ipynb](notebooks/comscore-demographics-vs-census.ipynb)
 
 
 ### Sessions data preprocessing
