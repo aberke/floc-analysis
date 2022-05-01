@@ -2,11 +2,6 @@
 
 This repository contains the code and empirical results from our analysis about the privacy limitations of Google's FLoC proposal.
 
-Preprint:
-
-Berke, A. & Calacci, D. (2022). Privacy Limitations Of Interest-based Advertising On The Web: A Post-mortem Empirical Analysis Of Google's FLoC. arXiv preprint arXiv:2201.13402.
-https://arxiv.org/pdf/2201.13402.pdf
-
 
 This analysis uses data from comScore Inc.
 While our work is open source, the comScore data is proprietary and available for purchase and cannot be openly shared due to the terms of use. Our analysis shows aggregated previews of the data and can be fully replicated upon obtaining this dataset. 
@@ -179,7 +174,7 @@ We find t-closeness is not violated for this panel (t=0.1).
 
 ##### Panel creation via stratified sampling
 
-Panels are sampled using stratified random sampling (without replacement) so that the joint distribution of income and race demographics in each of the panels matches the distribution of the U.S. population, as reported by the Census (ACS).
+Panels are sampled using stratified random sampling (without replacement) so that the joint distribution of income and race demographics in each of the panels matches the distribution of the U.S. population, as reported by the Census (CPS 2017).
 
 We generate 10 panels for each of the 520 weeks.
 
