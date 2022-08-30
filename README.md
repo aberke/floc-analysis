@@ -1,5 +1,11 @@
 # floc-analysis
 
+#### Citation
+
+Alex Berke and Dan Calacci. 2022. Privacy Limitations of Interest-based Advertising on The Web: A Post-mortem Empirical Analysis of Google’s FLoC. In Proceedings of the 2022 ACM SIGSAC Conference on Computer and Communications Security (CCS ’22), November 7–11, 2022, Los Angeles, CA, USA. ACM, New York, NY, USA, 13 pages. https://doi.org/10.1145/3548606.3560626
+
+## About this repository
+
 This repository contains the code and empirical results from our analysis about the privacy limitations of Google's FLoC proposal.
 
 
